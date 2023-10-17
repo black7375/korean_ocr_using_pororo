@@ -82,7 +82,7 @@ class PororoOcr(BaseOcr):
 
 # https://www.jaided.ai/easyocr/documentation/
 class EasyOcr(BaseOcr):
-    def __init__(self, lang: list[str] = ["ko", "en"], gpu=False, **kwargs):
+    def __init__(self, lang: list[str] = ["ko", "en"], gpu=True, **kwargs):
         super().__init__()
         self._ocr = Reader(lang_list=lang, gpu=gpu, **kwargs).readtext
 
@@ -101,7 +101,7 @@ class EasyOcr(BaseOcr):
         return ocr_text
 
 class EasyPororoOcr(BaseOcr):
-    def __init__(self, lang: list[str] = ["ko", "en"], gpu=False, **kwargs):
+    def __init__(self, lang: list[str] = ["ko", "en"], gpu=True, **kwargs):
         super().__init__()
         self._detector = Reader(lang_list=lang, gpu=gpu, **kwargs).detect
         self.detect_result = None
